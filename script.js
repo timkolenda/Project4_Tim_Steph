@@ -14,7 +14,8 @@ movieApp.accessKey = "f0ba00aa70aa95e488fb89869bf99a39";
 movieApp.discoverMovie = 'discover/movie';
 movieApp.searchForActor = `search/person`;
 movieApp.searchConfig = 'configuration';
-movieApp.searchMovieTrailor = `movie/${movieApp.userSelectionObject.movieID}/videos`;
+movieApp.searchMovieTrailor = 'movie/556696/videos'
+// movieApp.searchMovieTrailor = `movie/${movieApp.userSelectionObject.movieID}/videos`;
 
 
 // USER SELECTION
@@ -25,6 +26,8 @@ movieApp.APIOnly = {
     api_key: movieApp.accessKey,
 }
 
+movieApp.empty = {}
+
 movieApp.getPersonInfoDataObject = {
     api_key: movieApp.accessKey,
     query: movieApp.userActorSelection,
@@ -32,7 +35,7 @@ movieApp.getPersonInfoDataObject = {
 movieApp.getMovieInfoDataObject = {
     api_key: movieApp.accessKey,
     sort_by: 'popularity.asc',
-    with_people: 287
+    //CURRENTLY DROPPING THE ACTOR ID DIRECTLY IN
     // with_people: movieApp.userSelectionObject.userActorSelectionID
 };
 
@@ -42,7 +45,8 @@ movieApp.getMovieInfoDataObject = {
 movieApp.init = function () {
     movieApp.getPersonInfo()
     .then(movieApp.getMovieInfo())
-    // .then(movieApp.getConfiguration())
+    .then(movieApp.getConfiguration())
+    .then(movieApp.getVideos())
 
     
 
@@ -70,17 +74,20 @@ movieApp.getPersonInfo = function(){
     const personInfoPromise = movieApp.getData(movieApp.searchForActor, movieApp.getPersonInfoDataObject);
     personInfoPromise.then((res) => {
         // console.log('res', res);
-        movieApp.userSelectionObject.userActorSelectionID = res.results[0].id;
+        movieApp.getMovieInfoDataObject.with_person = res.results[0].id;
+        // movieApp.userSelectionObject.userActorSelectionID = res.results[0].id;
         movieApp.userSelectionObject.profilePath = res.results[0].profile_path;
         movieApp.userSelectionObject.name = res.results[0].name;
+        console.log(movieApp.getMovieInfoDataObject.with_person);
     });
     return personInfoPromise;
 }
 
 movieApp.getMovieInfo = function(){
+    // console.log('person number called right befor movie info promise',movieApp.getMovieInfoDataObject.with_person);
     const movieInfoPromise = movieApp.getData(movieApp.discoverMovie, movieApp.getMovieInfoDataObject);
     movieInfoPromise.then((res) =>{
-        // console.log('movie res', res);
+        // console.log('movie info object after getMovieInfo is called', movieApp.getMovieInfoDataObject);
         movieApp.userSelectionObject.movieTitle = res.results[0].title;
         movieApp.userSelectionObject.movieOverView = res.results[0].overview;
         movieApp.userSelectionObject.movieID = res.results[0].id;
@@ -100,14 +107,20 @@ movieApp.getConfiguration = function(){
         movieApp.userSelectionObject.profileSize = res.images.profile_sizes[1];
         // console.log(res);
     });
-    return configPromise
+    return configPromise;
     // console.log(res)
 }
 
 
 movieApp.getVideos = function(){
-    movieApp.getData(movieApp.serchMovieTrailor, movieApp.APIOnly);
-    movieApp.getData(movieApp.serchMovieTrailor, `/movie/${movieApp.userSelectionObject.movieID}/videos`);
+    const videoPromise = movieApp.getData(movieApp.searchMovieTrailor, movieApp.APIOnly);
+    // movieApp.getData(movieApp.serchMovieTrailor, movieApp.APIOnly);
+    // movieApp.getData(movieApp.serchMovieTrailor, `/movie/${movieApp.userSelectionObject.movieID}/videos`);
+    videoPromise.then((res) => {
+        console.log('getVids',res);
+        console.log
+    });
+    return videoPromise;
 }
 
 
