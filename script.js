@@ -14,7 +14,8 @@ movieApp.accessKey = "f0ba00aa70aa95e488fb89869bf99a39";
 movieApp.discoverMovie = 'discover/movie';
 movieApp.searchForActor = `search/person`;
 movieApp.searchConfig = 'configuration';
-movieApp.searchMovieTrailor = 'movie/556696/videos'
+movieApp.searchMovieTrailor = 'movie/338952/videos'
+// movieApp.searchMovieTrailor = 'movie/338952/videos?api_key=f0ba00aa70aa95e488fb89869bf99a39'
 // movieApp.searchMovieTrailor = `movie/${movieApp.userSelectionObject.movieID}/videos`;
 
 
@@ -34,7 +35,7 @@ movieApp.getPersonInfoDataObject = {
 };
 movieApp.getMovieInfoDataObject = {
     api_key: movieApp.accessKey,
-    sort_by: 'popularity.asc',
+    // sort_by: 'popularity.asc',
     //CURRENTLY DROPPING THE ACTOR ID DIRECTLY IN
     // with_people: movieApp.userSelectionObject.userActorSelectionID
 };
@@ -117,8 +118,7 @@ movieApp.getVideos = function(){
     // movieApp.getData(movieApp.serchMovieTrailor, movieApp.APIOnly);
     // movieApp.getData(movieApp.serchMovieTrailor, `/movie/${movieApp.userSelectionObject.movieID}/videos`);
     videoPromise.then((res) => {
-        console.log('getVids',res);
-        console.log
+        console.log('getVids', res);
     });
     return videoPromise;
 }
