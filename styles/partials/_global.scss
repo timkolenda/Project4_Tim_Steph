@@ -1,0 +1,71 @@
+$primaryColor: #3BC8E6;
+$accentColor: #15172B;
+$fontColorLight: #fcfcfc;
+
+@mixin primaryFont($size, $color) {
+    font-family: 'Raleway', sans-serif;
+    color: $color;
+    letter-spacing: 1px;
+    font-size: $size;
+}
+
+@mixin globalBtn {
+    @include primaryFont(2rem, $fontColorLight);
+    background: $primaryColor;
+    padding: 15px 50px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 50px;
+    &:hover {
+        background: $accentColor;
+    }
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.8rem;
+}
+
+ul, li {
+	padding: 0;
+	margin: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.visuallyhidden:not(:focus):not(:active) {
+     position: absolute;
+     width: 1px;
+     height: 1px;
+     margin: -1px;
+     border: 0;
+     padding: 0;
+     white-space: nowrap;
+     clip-path: inset(100%);
+     clip: rect(0 0 0 0);
+     overflow: hidden;
+}
+
+// typography styles
+
+h1, h2, h3, h4, h5, h6, p {
+	padding: 0;
+    margin: 0;
+}
+
+// layout styles
+
+.wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 80%;
+}
+
+
+
