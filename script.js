@@ -43,7 +43,7 @@ movieApp.getMovieInfoDataObject = {
 
 //APP INIT
 movieApp.init = function () {
-    movieApp.search()
+    movieApp.search();
     // movieApp.getPersonInfo()
     // .then(movieApp.getMovieInfo())
     // .then(movieApp.getConfiguration())
