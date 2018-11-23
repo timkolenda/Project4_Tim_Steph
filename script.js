@@ -21,7 +21,7 @@ console.log('up here', movieApp.userSelectionObject);
 
 
 // USER SELECTION
-movieApp.userActorSelection = "Brad Pitt";
+movieApp.userActorSelection = "Sylvester Stallone";
 
 //Data Objects
 movieApp.APIOnly = {
@@ -86,33 +86,46 @@ movieApp.getPersonInfo = function(){
 }
 
 movieApp.extractPersonInfo = function(theDataWeGot){
-    console.log('it fuckin worked')
+    // console.log('it fuckin worked')
     movieApp.getMovieInfoDataObject.with_cast = theDataWeGot.results[0].id;
-    console.log('when actor is chosen', movieApp.getMovieInfoDataObject);
+    // console.log('when actor is chosen', movieApp.getMovieInfoDataObject);
     movieApp.userSelectionObject.profilePath = theDataWeGot.results[0].profile_path;
     movieApp.userSelectionObject.name = theDataWeGot.results[0].name;
+    console.log('worked', theDataWeGot);
     movieApp.getMovieInfo();    
 
 }
 
 
 movieApp.getMovieInfo = function(){
-    movieApp.getData(movieApp.discoverMovie, movieApp.getMovieInfoDataObject, movieApp.extractMovieInfo);
+    movieApp.getData(movieApp.discoverMovie, movieApp.getMovieInfoDataObject, movieApp.movieSelector);
 }
 
-movieApp.extractMovieInfo = function (theDataWeGot){
-    // console.log("made it this far")
-    // for(let i = 0; i > 21; i++)
-    // if (theDataWeGot.results[i].poster_path !== true){  
-    //     console.log('loop it!')      
-    // } else {
-        movieApp.userSelectionObject.movieTitle = theDataWeGot.results[0].title;
-        movieApp.userSelectionObject.movieOverView = theDataWeGot.results[0].overview;
-        movieApp.userSelectionObject.movieID = theDataWeGot.results[0].id;
-        movieApp.userSelectionObject.moviePosterEndPoint = theDataWeGot.results[0].poster_path;
-        movieApp.userSelectionObject.moviePopularity = theDataWeGot.results[0].popularity;
-        console.log(theDataWeGot);
-        movieApp.getConfiguration();
+movieApp.movieSelector = function (theDataWeGot){
+    movieApp.userSelectionObject.movieList = theDataWeGot.results.filter(function(film){
+        return film.vote_count > 50;
+    });
+    console.log('list', movieApp.userSelectionObject.movieList);
+    movieApp.extractMovieInfo();
+}
+
+movieApp.extractMovieInfo = function (){
+    console.log("made it this far")
+    // movieApp.movieSelector();
+    movieApp.userSelectionObject.movieTitle = movieApp.userSelectionObject.movieList[0].title;
+    console.log(movieApp.userSelectionObject.movieTitle);
+    movieApp.userSelectionObject.movieOverView = movieApp.userSelectionObject.movieList[0].overview;
+    console.log(movieApp.userSelectionObject.movieOverView);
+    movieApp.userSelectionObject.movieID = movieApp.userSelectionObject.movieList[0].id;
+    console.log(movieApp.userSelectionObject.movieID);
+    movieApp.userSelectionObject.moviePosterEndPoint = movieApp.userSelectionObject.movieList[0].poster_path;
+    console.log(movieApp.userSelectionObject.moviePosterEndPoint);
+    movieApp.userSelectionObject.moviePopularity = movieApp.userSelectionObject.movieList[0].popularity;
+    console.log(movieApp.userSelectionObject.moviePopularity);
+    movieApp.userSelectionObject.movieRating = movieApp.userSelectionObject.movieList[0].vote_average;
+    console.log(movieApp.userSelectionObject.movieRating);
+    // console.log(movieApp.userSelectionObject.movieList);
+    movieApp.getConfiguration();
         // return
     // }
 }
@@ -129,9 +142,8 @@ movieApp.extractConfigData = function (theDataWeGot){
     movieApp.userSelectionObject.stillSize = theDataWeGot.images.still_sizes[1];
     movieApp.userSelectionObject.profileSize = theDataWeGot.images.profile_sizes[1];
     console.log(theDataWeGot);
-    console.log(movieApp.userSelectionObject.movieID);
-    console.log(movieApp.searchMovieTrailor);
-
+    // console.log(movieApp.userSelectionObject.movieID);
+    // console.log(movieApp.searchMovieTrailor);
     movieApp.getVideos();
     
 }
@@ -142,17 +154,21 @@ movieApp.getVideos = function(){
 }
 
 movieApp.extractVideoInfo = function (theDataWeGot){
-    movieApp.userSelectionObject.videoKey = theDataWeGot.results[Math.floor(Math.random() * theDataWeGot.results.length)].key;
     console.log('worked',theDataWeGot);
-    console.log(movieApp.userSelectionObject.videoKey);
+    // if(theDataWeGot.results){
+        movieApp.userSelectionObject.videoKey = theDataWeGot.results[Math.floor(Math.random() * theDataWeGot.results.length)].key;
+    // }
+    movieApp.organizeData();
 }
-
 
 movieApp.organizeData = function(){
     movieApp.userSelectionObject.videoLink = `https://www.youtube.com/watch?v=${movieApp.userSelectionObject.videoKey}`
-    console.log(movieApp.userSelectionObject.videoLink);
-    movieApp.userSelectionObject.moviePoster = `${movieApp.userSelectionObject.imageBaseURL}${movieApp.userSelectionObject.posterSize}${moviePosterEndPoint}`
-    console.log(movieApp.userSelectionObject.moviePoster);
+    
+    // console.log(movieApp.userSelectionObject.videoLink);
+    movieApp.userSelectionObject.moviePoster = `${movieApp.userSelectionObject.imageBaseURL}${movieApp.userSelectionObject.posterSize}${movieApp.userSelectionObject.moviePosterEndPoint}`
+    // console.log(movieApp.userSelectionObject.moviePoster);
+    console.log(movieApp.userSelectionObject);
+    console.log('done');
 }
 
 
