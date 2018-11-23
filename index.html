@@ -1,16 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project4</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="icon" href="images/favicon.png">
+    <title>Two thumbs down</title>
 </head>
-<body>
-    
 
+<body>
+    <!-- HEADER START -->
+    <header>
+        <div class="wrapper hero">
+            <h1 class="hero__heading">Two thumbs <span class="hero__heading--blue">down</span></h1>
+            <h2 class="hero__subheading">Bad movie selector</h2>
+            <p class="hero__text">Type in your favorite actor below to get their worst rated movie</p>
+            <form action="#" class="hero__form">
+                <label for="actor" class="visuallyhidden">Actor name</label>
+                <input type="text" id="actor" name="actor" class="hero__form--input" placeholder="Actor Name">
+                <input type="submit" name="" id="" class="hero__form--btn" value="Find Movie">
+            </form>
+        </div>
+    </header>
+    <!-- HEADER END -->
+
+    <!-- RESULTS START -->
+    <section class="results">
+        <div class="wrapper">
+            <div class="content-container clearfix">
+                <div class="content-container__left">
+                    <img src="images/jb.jpg" class="content-container__left--img" alt="movie poster">
+                </div>
+                <div class="content-container__right clearfix">
+                    <h2 class="content-container__title">Movie Title</h2>
+                    <p class="content-container__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+                        rem a quis veritatis blanditiis recusandae expedita iure voluptatibus, incidunt praesentium.
+                        Odio rem a quis veritatis blanditiis recusandae expedita iure voluptatibus, incidunt
+                        praesentium.</p>
+                    <p class="content-container__rating">7.5/10</p>
+                    <img src="images/thumbs-down.png" class="content-container__img" alt="">
+                    <a href="#" class="content-container__button">View trailer</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- RESULTS END -->
+
+    <!-- FOOTER START -->
+    <footer>
+        <div class="wrapper">
+            <p class="footer-text">&copy; 2018 Tim Kolenda, Stephanie Pileggi | API Powered by The Movie DB</p>
+        </div>
+    </footer>
+    <!-- FOOTER END -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <script src='script.js'></script>
 </body>
+
 </html>
