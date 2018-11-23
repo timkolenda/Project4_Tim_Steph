@@ -1,5 +1,3 @@
-
-
 // APP OBJECT
 const movieApp = {}
 
@@ -44,19 +42,26 @@ movieApp.getMovieInfoDataObject = {
 //APP INIT
 movieApp.init = function () {
     movieApp.search();
-    // movieApp.getPersonInfo()
     // .then(movieApp.getMovieInfo())
     // .then(movieApp.getConfiguration())
     // .then(movieApp.getVideos())
-
-    
-
 };
 
 $(function () {
     movieApp.init();
 });
 
+movieApp.search = function () {
+    $('.hero__form').on('submit', function (event) {
+        event.preventDefault();
+        console.log('set');
+        console.log(`${$('.hero__form--input').val()}`);
+        movieApp.userActorSelection = $('.hero__form--input').val();
+        // movieApp.getPersonInfo();
+        console.log()
+
+    })
+}
 
 movieApp.search = function(){
     $('.hero__form').on('submit', function(event){
@@ -215,6 +220,8 @@ movieApp.addRatingToSite = function(){
 movieApp.addTrailerToSite = function(){
     $('.content-container__button').attr('href', movieApp.userSelectionObject.videoLink);
 }
+
+
 
 
 
