@@ -76,6 +76,25 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+}
+
+.video {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    background: linear-gradient(rgba(0,0,0,0.8));
+    .video-container {
+        margin: auto;
+        position: relative;       
+    }
+    &--active{
+        display: flex;
+    }
 }
 
 .content-container {

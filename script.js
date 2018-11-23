@@ -42,6 +42,8 @@ movieApp.getMovieInfoDataObject = {
 //APP INIT
 movieApp.init = function () {
     movieApp.search();
+    movieApp.showVideo();
+    movieApp.hideVideo();
     // .then(movieApp.getMovieInfo())
     // .then(movieApp.getConfiguration())
     // .then(movieApp.getVideos())
@@ -71,7 +73,7 @@ movieApp.search = function(){
         movieApp.getPersonInfoDataObject.query = $('.hero__form--input').val();
         console.log(movieApp.userActorSelection);
         movieApp.getPersonInfo();
-        $('html, body').animate({ scrollTop: $(document).height() }, 1000);
+        $('html, body').animate({ scrollTop: $(document).height() }, 3000);
     })
 }
 
@@ -182,7 +184,7 @@ movieApp.extractVideoInfo = function (theDataWeGot){
 }
 
 movieApp.organizeData = function(){
-    movieApp.userSelectionObject.videoLink = `https://www.youtube.com/watch?v=${movieApp.userSelectionObject.videoKey}`
+    movieApp.userSelectionObject.videoLink = `https://www.youtube.com/embed/${movieApp.userSelectionObject.videoKey}`
     
     // console.log(movieApp.userSelectionObject.videoLink);
     movieApp.userSelectionObject.moviePoster = `${movieApp.userSelectionObject.imageBaseURL}${movieApp.userSelectionObject.posterSize}${movieApp.userSelectionObject.moviePosterEndPoint}`
@@ -218,10 +220,22 @@ movieApp.addRatingToSite = function(){
 }
 
 movieApp.addTrailerToSite = function(){
-    $('.content-container__button').attr('href', movieApp.userSelectionObject.videoLink);
+    $('.video-trailer').attr('src', movieApp.userSelectionObject.videoLink);
 }
 
 
+
+movieApp.showVideo = function(){
+    $('.content-container__button').on('click', function(){
+        $('.video').toggleClass('video--active');
+    });
+}
+
+movieApp.hideVideo = function(){
+    $('.video').on('click', function(){
+        $('.video').toggleClass('video--active');
+    });
+}
 
 
 
