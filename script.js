@@ -16,12 +16,12 @@ movieApp.searchForActor = `search/person`;
 movieApp.searchConfig = 'configuration';
 // movieApp.searchMovieTrailor = 'movie/383498/videos'
 // movieApp.searchMovieTrailor = 'movie/338952/videos?api_key=f0ba00aa70aa95e488fb89869bf99a39'
-movieApp.searchMovieTrailor = `movie/${movieApp.userSelectionObject.movieID}/videos`;
-console.log('up here', movieApp.userSelectionObject);
+movieApp.searchMovieTrailer = `movie/${movieApp.userSelectionObject.movieID}/videos`;
+// console.log('up here', movieApp.userSelectionObject);
 
 
 // USER SELECTION
-movieApp.userActorSelection = "Sylvester Stallone";
+// movieApp.userActorSelection = "Brad Pitt";
 
 //Data Objects
 movieApp.APIOnly = {
@@ -29,10 +29,9 @@ movieApp.APIOnly = {
 }
 
 
-
 movieApp.getPersonInfoDataObject = {
     api_key: movieApp.accessKey,
-    query: movieApp.userActorSelection,
+    // query: movieApp.userActorSelection,
 };
 movieApp.getMovieInfoDataObject = {
     api_key: movieApp.accessKey,
@@ -44,7 +43,8 @@ movieApp.getMovieInfoDataObject = {
 
 //APP INIT
 movieApp.init = function () {
-    movieApp.getPersonInfo()
+    movieApp.search()
+    // movieApp.getPersonInfo()
     // .then(movieApp.getMovieInfo())
     // .then(movieApp.getConfiguration())
     // .then(movieApp.getVideos())
@@ -58,7 +58,21 @@ $(function () {
 });
 
 
+movieApp.search = function(){
+    $('.hero__form').on('submit', function(event){
+        event.preventDefault();
+        // console.log('set');
+        // console.log(`${$('.hero__form--input').val()}`);
+        movieApp.getPersonInfoDataObject.query = $('.hero__form--input').val();
+        console.log(movieApp.userActorSelection);
+        movieApp.getPersonInfo();
+        $('html, body').animate({ scrollTop: $(document).height() }, 1000);
+    })
+}
+
+
 movieApp.getData = function(searchType, data, callback){
+    console.log('good');
     return $.ajax({
         url: `${movieApp.baseURL}${searchType}`,
         dataType: 'jsonp',
@@ -73,6 +87,7 @@ movieApp.getData = function(searchType, data, callback){
 }
 
 movieApp.getPersonInfo = function(){
+    console.log('good');
     movieApp.getData(movieApp.searchForActor, movieApp.getPersonInfoDataObject, movieApp.extractPersonInfo);
     // const personInfoPromise = movieApp.getData(movieApp.searchForActor, movieApp.getPersonInfoDataObject);
     // personInfoPromise.then((res) => {
@@ -86,7 +101,7 @@ movieApp.getPersonInfo = function(){
 }
 
 movieApp.extractPersonInfo = function(theDataWeGot){
-    // console.log('it fuckin worked')
+    console.log('it fuckin worked')
     movieApp.getMovieInfoDataObject.with_cast = theDataWeGot.results[0].id;
     // console.log('when actor is chosen', movieApp.getMovieInfoDataObject);
     movieApp.userSelectionObject.profilePath = theDataWeGot.results[0].profile_path;
@@ -103,7 +118,7 @@ movieApp.getMovieInfo = function(){
 
 movieApp.movieSelector = function (theDataWeGot){
     movieApp.userSelectionObject.movieList = theDataWeGot.results.filter(function(film){
-        return film.vote_count > 50;
+        return film.vote_count >= 50    ;
     });
     console.log('list', movieApp.userSelectionObject.movieList);
     movieApp.extractMovieInfo();
@@ -113,17 +128,17 @@ movieApp.extractMovieInfo = function (){
     console.log("made it this far")
     // movieApp.movieSelector();
     movieApp.userSelectionObject.movieTitle = movieApp.userSelectionObject.movieList[0].title;
-    console.log(movieApp.userSelectionObject.movieTitle);
+    // console.log(movieApp.userSelectionObject.movieTitle);
     movieApp.userSelectionObject.movieOverView = movieApp.userSelectionObject.movieList[0].overview;
-    console.log(movieApp.userSelectionObject.movieOverView);
+    // console.log(movieApp.userSelectionObject.movieOverView);
     movieApp.userSelectionObject.movieID = movieApp.userSelectionObject.movieList[0].id;
-    console.log(movieApp.userSelectionObject.movieID);
+    // console.log(movieApp.userSelectionObject.movieID);
     movieApp.userSelectionObject.moviePosterEndPoint = movieApp.userSelectionObject.movieList[0].poster_path;
-    console.log(movieApp.userSelectionObject.moviePosterEndPoint);
+    // console.log(movieApp.userSelectionObject.moviePosterEndPoint);
     movieApp.userSelectionObject.moviePopularity = movieApp.userSelectionObject.movieList[0].popularity;
-    console.log(movieApp.userSelectionObject.moviePopularity);
+    // console.log(movieApp.userSelectionObject.moviePopularity);
     movieApp.userSelectionObject.movieRating = movieApp.userSelectionObject.movieList[0].vote_average;
-    console.log(movieApp.userSelectionObject.movieRating);
+    // console.log(movieApp.userSelectionObject.movieRating);
     // console.log(movieApp.userSelectionObject.movieList);
     movieApp.getConfiguration();
         // return
@@ -155,9 +170,9 @@ movieApp.getVideos = function(){
 
 movieApp.extractVideoInfo = function (theDataWeGot){
     console.log('worked',theDataWeGot);
-    // if(theDataWeGot.results){
+    if(theDataWeGot.results.toString()){
         movieApp.userSelectionObject.videoKey = theDataWeGot.results[Math.floor(Math.random() * theDataWeGot.results.length)].key;
-    // }
+    }
     movieApp.organizeData();
 }
 
@@ -169,7 +184,40 @@ movieApp.organizeData = function(){
     // console.log(movieApp.userSelectionObject.moviePoster);
     console.log(movieApp.userSelectionObject);
     console.log('done');
+    movieApp.addMovieInfoToSite();
 }
+
+movieApp.addMovieInfoToSite = function(){
+    movieApp.addTitleToSite();
+    movieApp.addPosterImageToSite();
+    movieApp.addOverViewToSite();
+    movieApp.addRatingToSite();
+    movieApp.addTrailerToSite();
+
+}
+
+movieApp.addTitleToSite = function(){
+    $('.content-container__title').html(`${movieApp.userSelectionObject.movieTitle}`);
+}
+
+movieApp.addPosterImageToSite = function(){
+    $('.content-container__left--img').attr('src', movieApp.userSelectionObject.moviePoster);
+}
+
+movieApp.addOverViewToSite = function(){
+    $('.content-container__text').html(`${movieApp.userSelectionObject.movieOverView}`);
+}
+
+movieApp.addRatingToSite = function(){
+    $('.content-container__rating').html(`${movieApp.userSelectionObject.movieRating}/10`)
+}
+
+movieApp.addTrailerToSite = function(){
+    $('.content-container__button').attr('href', movieApp.userSelectionObject.videoLink);
+}
+
+
+
 
 
 
