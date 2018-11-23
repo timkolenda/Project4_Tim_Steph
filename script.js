@@ -1,5 +1,3 @@
-
-
 // APP OBJECT
 const movieApp = {}
 
@@ -17,11 +15,11 @@ movieApp.searchConfig = 'configuration';
 // movieApp.searchMovieTrailor = 'movie/383498/videos'
 // movieApp.searchMovieTrailor = 'movie/338952/videos?api_key=f0ba00aa70aa95e488fb89869bf99a39'
 movieApp.searchMovieTrailor = `movie/${movieApp.userSelectionObject.movieID}/videos`;
-console.log('up here', movieApp.userSelectionObject);
+// console.log('up here', movieApp.userSelectionObject);
 
 
 // USER SELECTION
-movieApp.userActorSelection = "Sylvester Stallone";
+// movieApp.userActorSelection = $('.hero__form--input').text();
 
 //Data Objects
 movieApp.APIOnly = {
@@ -44,19 +42,27 @@ movieApp.getMovieInfoDataObject = {
 
 //APP INIT
 movieApp.init = function () {
-    movieApp.getPersonInfo()
+    movieApp.search();
     // .then(movieApp.getMovieInfo())
     // .then(movieApp.getConfiguration())
     // .then(movieApp.getVideos())
-
-    
-
 };
 
 $(function () {
     movieApp.init();
 });
 
+movieApp.search = function () {
+    $('.hero__form').on('submit', function (event) {
+        event.preventDefault();
+        console.log('set');
+        console.log(`${$('.hero__form--input').val()}`);
+        movieApp.userActorSelection = $('.hero__form--input').val();
+        // movieApp.getPersonInfo();
+        console.log()
+
+    })
+}
 
 movieApp.getData = function(searchType, data, callback){
     return $.ajax({
@@ -170,6 +176,8 @@ movieApp.organizeData = function(){
     console.log(movieApp.userSelectionObject);
     console.log('done');
 }
+
+
 
 
 
