@@ -54,7 +54,7 @@ header {
             @include primaryFont(2rem, #86888A);
             background: #fcfcfc;
             padding: 15px 150px;
-            // text-transform: uppercase;
+            text-transform: uppercase;
             border: none;
             border-radius: 50px;
             text-align: center;
@@ -76,21 +76,20 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: calc(100vh - 58px);
 }
 
 .content-container {
     background: #1B1F38;
-    margin: 205px auto;
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
-    position: relative;
-    padding: 30px 50px 50px 50px;
+    padding: 30px 50px -100px 50px;
 
     &__title {
         @include primaryFont(3rem, $primaryColor);
         text-transform: uppercase;
-        padding: 20px 0;
+        padding-bottom: 20px;
     }
 
     &__text {
@@ -117,17 +116,21 @@ header {
     }
 
     &__left {
-        flex: 1 1 50%;
         &--img {
-            position: absolute;
-            top: -60px;
-            left: 50px;
-            box-shadow: 10px 10px 13px #0E0F1F;
+            width: 80%;
+            height: auto;
+            max-width: 100%;
+            position: relative;
+            top: -100px;
+            left: 0px;
+            box-shadow: 12px 12px 12px #0E0F1F;
         }
     }
 
-    &__right {
-        flex: 1 1 50%;
+    &__right,
+    &__left {
+            flex: 1 1 50%;
+            padding: 0px 0px;
     }
 }
 
@@ -195,8 +198,6 @@ footer {
         }
 
         &__left {
-            flex: 1 1 50%;
-            padding: 15px;
             &--img {
                 position: initial;
                 width: 100%;
@@ -204,9 +205,10 @@ footer {
             }
         }
 
-        &__right {
+        &__right,
+        &__left {
             flex: 1 1 50%;
-            padding: 15px;
+            padding: 0px 0px;
         }
     }
 
