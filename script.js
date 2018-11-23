@@ -21,7 +21,7 @@ console.log('up here', movieApp.userSelectionObject);
 
 
 // USER SELECTION
-movieApp.userActorSelection = "Sylvester Stallone";
+movieApp.userActorSelection = "Brad Pitt";
 
 //Data Objects
 movieApp.APIOnly = {
@@ -103,7 +103,7 @@ movieApp.getMovieInfo = function(){
 
 movieApp.movieSelector = function (theDataWeGot){
     movieApp.userSelectionObject.movieList = theDataWeGot.results.filter(function(film){
-        return film.vote_count > 50;
+        return film.vote_count >= 0;
     });
     console.log('list', movieApp.userSelectionObject.movieList);
     movieApp.extractMovieInfo();
@@ -113,17 +113,17 @@ movieApp.extractMovieInfo = function (){
     console.log("made it this far")
     // movieApp.movieSelector();
     movieApp.userSelectionObject.movieTitle = movieApp.userSelectionObject.movieList[0].title;
-    console.log(movieApp.userSelectionObject.movieTitle);
+    // console.log(movieApp.userSelectionObject.movieTitle);
     movieApp.userSelectionObject.movieOverView = movieApp.userSelectionObject.movieList[0].overview;
-    console.log(movieApp.userSelectionObject.movieOverView);
+    // console.log(movieApp.userSelectionObject.movieOverView);
     movieApp.userSelectionObject.movieID = movieApp.userSelectionObject.movieList[0].id;
-    console.log(movieApp.userSelectionObject.movieID);
+    // console.log(movieApp.userSelectionObject.movieID);
     movieApp.userSelectionObject.moviePosterEndPoint = movieApp.userSelectionObject.movieList[0].poster_path;
-    console.log(movieApp.userSelectionObject.moviePosterEndPoint);
+    // console.log(movieApp.userSelectionObject.moviePosterEndPoint);
     movieApp.userSelectionObject.moviePopularity = movieApp.userSelectionObject.movieList[0].popularity;
-    console.log(movieApp.userSelectionObject.moviePopularity);
+    // console.log(movieApp.userSelectionObject.moviePopularity);
     movieApp.userSelectionObject.movieRating = movieApp.userSelectionObject.movieList[0].vote_average;
-    console.log(movieApp.userSelectionObject.movieRating);
+    // console.log(movieApp.userSelectionObject.movieRating);
     // console.log(movieApp.userSelectionObject.movieList);
     movieApp.getConfiguration();
         // return
