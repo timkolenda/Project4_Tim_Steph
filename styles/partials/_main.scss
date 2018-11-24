@@ -147,7 +147,22 @@ header {
     background: linear-gradient(rgba(0,0,0,0.8));
     .video-container {
         margin: auto;
-        position: relative;       
+        position: relative; 
+        position: relative;
+        padding-top: 480px;
+        // padding-top: 35px;
+        // height: 0;
+        overflow: hidden;    
+        width: 854px;
+        // max-width: 600px;  
+    }
+    //The IFRAME
+    .video-trailer {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
     &--active{
         display: flex;
@@ -234,5 +249,10 @@ footer {
 
 }
 
+@media(max-width: 854px){
+    div.video .video-container {
+        padding-top: 56.25%;
+    }
+}
 
 
