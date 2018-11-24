@@ -82,7 +82,7 @@ header {
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
-    padding: 30px 30px -30px 30px;
+    padding: 20px;
 
     &__title {
         @include primaryFont(3rem, $primaryColor);
@@ -92,7 +92,7 @@ header {
 
     &__text {
         @include primaryFont(1.8rem, $fontColorLight);
-        line-height: 1.5;
+        line-height: 1.6;
     }
 
     &__rating {
@@ -101,14 +101,13 @@ header {
     }
 
     &__img {
-        padding-top: 30px;
+        padding-top: 25px;
     }
 
     &__button {
         @include globalBtn;
         margin-top: 15px;
         align-self: center;
-        margin-right: 40px;
         float: right;
     }
 
@@ -119,9 +118,10 @@ header {
             height: auto;
             max-width: 100%;
             margin: 0 auto;
-            // position: relative;
-            // top: -30px;
-            // left: 30px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             box-shadow: 12px 12px 12px #0E0F1F;
         }
     }
@@ -168,71 +168,229 @@ footer {
 
 // MEDIA QUERIES
 
-// HEADER
-@media(max-width: 1134px) {
+@media(max-width: 1000px) {
+    .wrapper {
+        width: 90%;
+    }
+
     .hero {
         
         &__heading {
-            @include primaryFont(8rem, $fontColorLight);  
+            @include primaryFont(6rem, $fontColorLight);
         }
 
         &__subheading {
-            @include primaryFont(3rem, $fontColorLight);
-            padding-bottom: 80px;
+            padding-bottom: 50px;
         }
 
         &__text {
-            @include primaryFont(2rem, $fontColorLight);
-            max-width: 700px;
+            max-width: 500px;
+        }
+
+        &__form {
+
+            &--input {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    // RESULTS
+    .content-container {
+        padding: 20px;
+
+        &__title {
+            @include primaryFont(2.5rem, $primaryColor);
+        }
+
+        &__left,
+        &__right {
+            padding: 15px;
+        }
+
+        &__left {
+            flex: 1 1 40%;
+        }
+
+        &__right {
+            flex: 1 1 60%;
+        }
+
+        &__button {
+            font-size: 1.8rem;
+            padding: 13px 40px;
+        }
+    }
+    // FOOTER
+    .footer-text {
+        @include primaryFont(1.3rem, $fontColorLight);
+    }
+}
+
+@media(max-width: 845px) {
+    .hero {
+        &__form {
+
+            &--input {
+                padding: 13px 80px;
+                margin-top: 10px;
+            }
+        }
+    }
+    // RESULTS
+    .content-container {
+        margin: 50px 0;
+        padding: 20px;
+
+        &__title {
+            @include primaryFont(2.5rem, $primaryColor);
+        }
+
+        &__text {
+            @include primaryFont(1.4rem, $fontColorLight);
+            line-height: 1.6;
+        }
+
+        &__left,
+        &__right {
+            padding: 15px;
+        }
+
+        &__left {
+            flex: 1 1 40%;
+        }
+
+        &__right {
+            flex: 1 1 60%;
+        }
+
+        &__button {
+            font-size: 1.8rem;
+            padding: 13px 40px;
+        }
+    }
+}
+
+@media (max-width: 665px) {
+    .hero {
+        &__heading {
+            @include primaryFont(4rem, $fontColorLight);
+        }
+
+        &__subheading {
+            @include primaryFont(2.5rem, $fontColorLight);
+            padding-bottom: 30px;
+        }
+
+        &__text {
+            @include primaryFont(1.5rem, $fontColorLight);
         }
 
         &__form {
 
             &--input {
                 margin-top: 15px;
-
             }
         }
     }
 
-// RESULTS
-
+    // RESULTS
     .content-container {
-        padding: 30px;
+        padding: 20px;
 
-        &__text {
-            padding-right: 0px;
+        &__title {
+            @include primaryFont(2.5rem, $primaryColor);
         }
 
-        &__rating {
-            padding: 20px 25px 0 0;
-            float: left;
+        &__left,
+        &__right {
+            padding: 15px;
         }
 
-        &__img {
-            padding-top: 20px;
+        &__left {
+            flex: 1 1 40%;
+        }
+
+        &__right {
+            flex: 1 1 60%;
         }
 
         &__button {
-            float: left;
+            font-size: 1.8rem;
+            padding: 13px 40px;
         }
+    }
+    // FOOTER
+    .footer-text {
+        @include primaryFont(1.3rem, $fontColorLight);
+    }
+}
+
+@media(max-width: 845px) {
+    .hero {
+        &__form {
+
+            &--input {
+                @include primaryFont(1.5rem, #86888A);
+                text-transform: uppercase;
+                border: none;
+                border-radius: 50px;
+                text-align: center;
+                padding: 13px 60px;
+                margin-top: 10px;
+            }
+
+            &--btn {
+                font-size: 1.5rem;  
+                padding: 13px 50px;
+            }    
+        }
+    }
+    // RESULTS
+    .content-container {
+
+        &__button {
+            font-size: 1.5rem;
+            padding: 13px 40px;
+        }
+    } 
+}
+
+@media (max-width: 625px) {
+// RESULTS
+    .results {
+        height: initial;
+    }
+    .content-container {
+        margin: 50px;
 
         &__left {
+            flex: 1 1 100%;
             &--img {
-                position: initial;
-                width: 100%;
-                display: block;
+                width: 80%;
             }
         }
 
-        &__right,
-        &__left {
-            flex: 1 1 50%;
-            padding: 0px 0px;
+        &__right {
+            flex: 1 1 100%;
+        }
+
+        &__left,
+        &__right {
+            padding: 20px;
         }
     }
-
 }
 
+@media (max-width: 400px) {
+    .content-container {
+        margin: 30px;
+        padding: 0;
 
+        &__button {
+            font-size: 1.5rem;
+            padding: 13px 40px;
+        }
+    } 
+}
 
