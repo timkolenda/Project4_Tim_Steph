@@ -78,6 +78,7 @@ movieApp.search = function(){
 }
 
 
+
 movieApp.getData = function(searchType, data, callback){
     console.log('good');
     return $.ajax({
