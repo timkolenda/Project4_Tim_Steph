@@ -12,7 +12,7 @@ $fontColorLight: #fcfcfc;
 @mixin globalBtn {
     @include primaryFont(2rem, $fontColorLight);
     background: $primaryColor;
-    padding: 15px 50px;
+    padding: 13px 50px;
     text-transform: uppercase;
     border: none;
     border-radius: 50px;
