@@ -53,27 +53,34 @@ $(function () {
     movieApp.init();
 });
 
-movieApp.search = function () {
-    $('.hero__form').on('submit', function (event) {
-        event.preventDefault();
-        console.log('set');
-        console.log(`${$('.hero__form--input').val()}`);
-        movieApp.userActorSelection = $('.hero__form--input').val();
-        // movieApp.getPersonInfo();
-        console.log()
+// movieApp.displaySearch = function(){
+//     $('.hero__form--btn').on('click', function(){
+//         $('.results').addClass('')
+//     });
+// }
 
-    })
-}
+// movieApp.search = function () {
+//     $('.hero__form').on('submit', function (event) {
+//         event.preventDefault();
+//         $('.results').removeClass('visuallyhidden');
+//         console.log('set');
+//         console.log(`${$('.hero__form--input').val()}`);
+//         movieApp.userActorSelection = $('.hero__form--input').val();
+//         // movieApp.getPersonInfo();
+
+//     })
+// }
 
 movieApp.search = function(){
     $('.hero__form').on('submit', function(event){
         event.preventDefault();
         // console.log('set');
         // console.log(`${$('.hero__form--input').val()}`);
+        $('.results').removeClass('visuallyhidden');
         movieApp.getPersonInfoDataObject.query = $('.hero__form--input').val();
         console.log(movieApp.userActorSelection);
         movieApp.getPersonInfo();
-        $('html, body').animate({ scrollTop: $(document).height() }, 3000);
+        $('html, body').animate({ scrollTop: $('header').height() }, 3000);
     })
 }
 
