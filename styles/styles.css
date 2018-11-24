@@ -218,7 +218,8 @@ header {
     text-transform: uppercase;
     font-weight: 600; }
     .hero__heading--blue {
-      color: #3BC8E6; }
+      color: #3BC8E6;
+      z-index: 3; }
   .hero__subheading {
     font-family: 'Raleway', sans-serif;
     color: #fcfcfc;
