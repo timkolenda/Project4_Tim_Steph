@@ -122,7 +122,7 @@ header {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            box-shadow: 12px 12px 12px #0E0F1F;
+            border: 2px solid #fcfcfc;
         }
     }
 
@@ -397,15 +397,27 @@ footer {
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e4ea50bf217c941f2ad7524d578b67dc8a489186
 @media(max-width: 854px){
     div.video .video-container {
         padding-top: 56.25%;
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e4ea50bf217c941f2ad7524d578b67dc8a489186
 @media (max-width: 400px) {
     .content-container {
         margin: 30px;
         padding: 0;
+<<<<<<< HEAD
+=======
+
+>>>>>>> e4ea50bf217c941f2ad7524d578b67dc8a489186
 
         &__button {
             font-size: 1.5rem;
