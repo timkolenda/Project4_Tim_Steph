@@ -343,8 +343,7 @@ header {
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
-      -webkit-box-shadow: 12px 12px 12px #0E0F1F;
-      box-shadow: 12px 12px 12px #0E0F1F; }
+      border: 2px solid #fcfcfc; }
   .content-container__right {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 70%;
