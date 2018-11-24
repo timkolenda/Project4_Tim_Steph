@@ -234,6 +234,10 @@ movieApp.showVideo = function(){
 movieApp.hideVideo = function(){
     $('.video').on('click', function(){
         $('.video').toggleClass('video--active');
+        $('.video-trailer').each(function () {
+            var el_src = $(this).attr("src");
+            $(this).attr("src", el_src);
+        });
     });
 }
 
