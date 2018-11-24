@@ -418,3 +418,31 @@ footer {
     } 
 }
 
+//ANIMATION
+@keyframes fall {
+    0% {
+        top: 0;
+
+    }
+    100% {
+        top: 2000%;
+    }
+}   
+
+.animate {
+    position: relative;
+    color: $primaryColor;
+    animation: fall 3s ease-in 1;
+}
+
+// Then I added this right under the scroll function
+//  $(".hero__heading--blue").addClass('.animate');
+
+
+
+
+
+
+
+
+
