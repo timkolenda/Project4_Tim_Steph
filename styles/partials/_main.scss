@@ -72,9 +72,13 @@ header {
 .results {
     background: $accentColor;
     display: flex;
+    // display: none;
     flex-direction: column;
     justify-content: center;
     height: calc(100vh - 58px);
+    &--active{
+        display: flex;
+    }
 }
 
 .content-container {
@@ -397,18 +401,15 @@ footer {
     }
 }
 
-
 @media(max-width: 854px){
     div.video .video-container {
         padding-top: 56.25%;
     }
 }
-
 @media (max-width: 400px) {
     .content-container {
         margin: 30px;
         padding: 0;
-
 
         &__button {
             font-size: 1.5rem;
