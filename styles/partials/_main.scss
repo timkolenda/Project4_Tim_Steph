@@ -3,7 +3,7 @@
 header {
     background: url(../images/banner-image.png) no-repeat center center;
     background-size: cover;
-    height: 100vh;
+    height: calc(100vh - 58px);
     width: 100%;
     display: flex;
     flex-direction: column;
