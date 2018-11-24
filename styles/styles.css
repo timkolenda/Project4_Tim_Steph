@@ -172,7 +172,7 @@ h1, h2, h3, h4, h5, h6, p {
 header {
   background: url(../images/banner-image.png) no-repeat center center;
   background-size: cover;
-  height: 100vh;
+  height: calc(100vh - 58px);
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -562,7 +562,6 @@ footer {
       font-size: 1.5rem;
       padding: 13px 40px; } }
 
-
 @-webkit-keyframes fall {
   0% {
     top: 0; }
@@ -580,4 +579,3 @@ footer {
   color: #3BC8E6;
   -webkit-animation: fall 3s ease-in 1;
   animation: fall 3s ease-in 1; }
-
