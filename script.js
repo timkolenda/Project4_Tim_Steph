@@ -83,7 +83,7 @@ movieApp.search = function(){
         $('.hero__heading--blue').addClass('animate');
         $('html, body').animate({ scrollTop: $('header').height() }, 3000);
         // $('.hero__heading--blue').removeClass('animate');
-
+        //some stuff
     })
 }
 
