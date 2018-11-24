@@ -72,9 +72,13 @@ header {
 .results {
     background: $accentColor;
     display: flex;
+    // display: none;
     flex-direction: column;
     justify-content: center;
     height: calc(100vh - 58px);
+    &--active{
+        display: flex;
+    }
 }
 
 .content-container {
