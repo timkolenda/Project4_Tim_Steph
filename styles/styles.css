@@ -541,18 +541,6 @@ footer {
         width: 80%; }
     .content-container__right {
       -webkit-box-flex: 1;
-<<<<<<< HEAD
-=======
-
-      -ms-flex: 1 1 50%;
-      flex: 1 1 50%;
-      padding: 0px 0px; } }
-
-@media (max-width: 854px) {
-  div.video .video-container {
-    padding-top: 56.25%; } }
-
->>>>>>> e4ea50bf217c941f2ad7524d578b67dc8a489186
       -ms-flex: 1 1 100%;
       flex: 1 1 100%; }
     .content-container__left, .content-container__right {
@@ -569,7 +557,3 @@ footer {
     .content-container__button {
       font-size: 1.5rem;
       padding: 13px 40px; } }
-<<<<<<< HEAD
-=======
-
->>>>>>> e4ea50bf217c941f2ad7524d578b67dc8a489186
