@@ -281,6 +281,10 @@ header {
   -ms-flex-pack: center;
   justify-content: center;
   height: calc(100vh - 58px); }
+  .results--active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
 
 .content-container {
   background: #1B1F38;
