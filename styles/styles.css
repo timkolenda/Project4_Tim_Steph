@@ -561,6 +561,10 @@ footer {
     .content-container__button {
       font-size: 1.5rem;
       padding: 13px 40px; } }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2df85cf3f69ff9875aae79f456aee895b34139f2
 
 @-webkit-keyframes fall {
   0% {
@@ -579,3 +583,7 @@ footer {
   color: #3BC8E6;
   -webkit-animation: fall 3s ease-in 1;
   animation: fall 3s ease-in 1; }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2df85cf3f69ff9875aae79f456aee895b34139f2
