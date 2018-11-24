@@ -437,6 +437,10 @@ footer {
     letter-spacing: 1px;
     font-size: 1.3rem; } }
 
+@media (max-width: 854px) {
+  div.video .video-container {
+    padding-top: 56.25%; } }
+
 @media (max-width: 845px) {
   .hero__form--input {
     padding: 13px 80px;
@@ -468,6 +472,25 @@ footer {
     .content-container__button {
       font-size: 1.8rem;
       padding: 13px 40px; } }
+
+@media (max-width: 845px) {
+  .hero__form--input {
+    font-family: 'Raleway', sans-serif;
+    color: #86888A;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    padding: 13px 60px;
+    margin-top: 10px; }
+  .hero__form--btn {
+    font-size: 1.5rem;
+    padding: 13px 50px; }
+  .content-container__button {
+    font-size: 1.5rem;
+    padding: 13px 40px; } }
 
 @media (max-width: 665px) {
   .hero__heading {
@@ -550,10 +573,6 @@ footer {
       flex: 1 1 100%; }
     .content-container__left, .content-container__right {
       padding: 20px; } }
-
-@media (max-width: 854px) {
-  div.video .video-container {
-    padding-top: 56.25%; } }
 
 @media (max-width: 400px) {
   .content-container {
