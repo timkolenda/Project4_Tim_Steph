@@ -76,19 +76,21 @@ movieApp.search = function(){
         event.preventDefault();
         // console.log('set');
         // console.log(`${$('.hero__form--input').val()}`);
-        $('.results').removeClass('visuallyhidden');
         movieApp.getPersonInfoDataObject.query = $('.hero__form--input').val();
-        // alert the user if they do not enter any actor name
-        if (movieApp.getPersonInfoDataObject.query === "" || typeof movieApp.getPersonInfoDataObject.query !== "undefined") {
-            swal("Error", "Please enter a valid actor name!", "error");
-        } else {
         movieApp.getPersonInfo();
-        $('.hero__heading--blue').addClass('animate');
-        $('html, body').animate({ scrollTop: $('header').height() }, 3000);
+        // alert the user if they do not enter any actor name
+        // $('.results').removeClass('visuallyhidden');
+        // $('.hero__heading--blue').addClass('animate');
+        // $('html, body').animate({ scrollTop: $('header').height() }, 3000);
         // $('.hero__heading--blue').removeClass('animate');
         //some stuff
-        }
-    })
+        })
+}
+
+movieApp.displayMovieInfo = function(){
+    $('.results').removeClass('visuallyhidden');
+    $('.hero__heading--blue').addClass('animate');
+    $('html, body').animate({ scrollTop: $('header').height() }, 3000);
 }
 
 
@@ -124,13 +126,16 @@ movieApp.getPersonInfo = function(){
 
 movieApp.extractPersonInfo = function(theDataWeGot){
     console.log('it fuckin worked')
+    
     movieApp.getMovieInfoDataObject.with_cast = theDataWeGot.results[0].id;
+    if (theDataWeGot === false) {
+        swal("Error", "Please enter a valid actor name!", "error");
+    } else {
     // console.log('when actor is chosen', movieApp.getMovieInfoDataObject);
     movieApp.userSelectionObject.profilePath = theDataWeGot.results[0].profile_path;
     movieApp.userSelectionObject.name = theDataWeGot.results[0].name;
     console.log('worked', theDataWeGot);
     movieApp.getMovieInfo();    
-
 }
 
 
@@ -215,7 +220,7 @@ movieApp.addMovieInfoToSite = function(){
     movieApp.addOverViewToSite();
     movieApp.addRatingToSite();
     movieApp.addTrailerToSite();
-
+    movieApp.displayMovieInfo()
 }
 
 movieApp.addTitleToSite = function(){
@@ -264,14 +269,6 @@ movieApp.hideVideo = function(){
 
 
 
-// movieApp.getData(movieApp.discoverMovie, null, movieApp.userSelectionObject.userActorSelectionID);
-//^^^^^^ Technically this function pulls movies based on the actor that saved in user actor selection - wonky though
-
-
-//ask the api for an actor's data
-//push the id and poster end point to the actor object
-//use the id to ask the api for a list of movies
-//push the movie id, poster endpoint, video endpoint, movie rating, popularity, synopsis to the object
 
 
 //questions
