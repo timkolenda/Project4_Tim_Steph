@@ -13,13 +13,6 @@ movieApp.discoverMovie = 'discover/movie';
 movieApp.searchForActor = `search/person`;
 movieApp.searchConfig = 'configuration';
 
-// movieApp.searchMovieTrailer = `movie/${movieApp.userSelectionObject.movieID}/videos`;
-// console.log('up here', movieApp.userSelectionObject);
-
-
-// USER SELECTION
-// movieApp.userActorSelection = "Brad Pitt";
-
 //Data Objects
 movieApp.APIOnly = {
     api_key: movieApp.accessKey,
@@ -28,13 +21,14 @@ movieApp.APIOnly = {
 
 movieApp.getPersonInfoDataObject = {
     api_key: movieApp.accessKey,
-    // query: movieApp.userActorSelection,
-};
+    // QUERY ADDED IN W/ JS
+}
+
 movieApp.getMovieInfoDataObject = {
     api_key: movieApp.accessKey,
     sort_by: 'vote_average.asc',
     //CURRENTLY DROPPING THE ACTOR ID DIRECTLY IN
-};
+}
 
 
 
@@ -43,32 +37,12 @@ movieApp.init = function () {
     movieApp.search();
     movieApp.showVideo();
     movieApp.hideVideo();
-    // .then(movieApp.getMovieInfo())
-    // .then(movieApp.getConfiguration())
-    // .then(movieApp.getVideos())
 };
 
 $(function () {
     movieApp.init();
 });
 
-// movieApp.displaySearch = function(){
-//     $('.hero__form--btn').on('click', function(){
-//         $('.results').addClass('')
-//     });
-// }
-
-// movieApp.search = function () {
-//     $('.hero__form').on('submit', function (event) {
-//         event.preventDefault();
-//         $('.results').removeClass('visuallyhidden');
-//         console.log('set');
-//         console.log(`${$('.hero__form--input').val()}`);
-//         movieApp.userActorSelection = $('.hero__form--input').val();
-//         // movieApp.getPersonInfo();
-
-//     })
-// }
 
 movieApp.search = function(){
     $('.hero__form').on('submit', function(event){
@@ -116,29 +90,17 @@ movieApp.getData = function(searchType, data, callback){
 movieApp.getPersonInfo = function(){
     console.log('good');
     movieApp.getData(movieApp.searchForActor, movieApp.getPersonInfoDataObject, movieApp.extractPersonInfo);
-    // const personInfoPromise = movieApp.getData(movieApp.searchForActor, movieApp.getPersonInfoDataObject);
-    // personInfoPromise.then((res) => {
-    //     movieApp.getMovieInfoDataObject.with_person = res.results[0].id;
-    //     console.log('when actor is chosen',movieApp.getMovieInfoDataObject.with_person);
-    //     movieApp.userSelectionObject.profilePath = res.results[0].profile_path;
-    //     movieApp.userSelectionObject.name = res.results[0].name;
-    //     console.log('1');
-    // });
-    // return personInfoPromise;
 }
 
 movieApp.extractPersonInfo = function(theDataWeGot){
     console.log('it fuckin worked')
-    
-    movieApp.getMovieInfoDataObject.with_cast = theDataWeGot.results[0].id;
     console.log(theDataWeGot);
     if (theDataWeGot === undefined) {
         swal("Error", "Please enter a valid actor name!", "error");
     } else {
-    // console.log('when actor is chosen', movieApp.getMovieInfoDataObject);
+    movieApp.getMovieInfoDataObject.with_cast = theDataWeGot.results[0].id;
     movieApp.userSelectionObject.profilePath = theDataWeGot.results[0].profile_path;
     movieApp.userSelectionObject.name = theDataWeGot.results[0].name;
-    // console.log('worked', theDataWeGot);
     movieApp.getMovieInfo();    
     }
 }
