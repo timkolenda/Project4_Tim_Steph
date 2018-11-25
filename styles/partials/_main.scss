@@ -3,7 +3,7 @@
 header {
     background: url(../images/banner-image.png) no-repeat center center;
     background-size: cover;
-    height: calc(100vh - 58px);
+    height: calc(100vh - 55px);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -53,13 +53,15 @@ header {
         &--input {
             @include primaryFont(2rem, #86888A);
             background: #fcfcfc;
-            padding: 13px 130px;
+            padding: 13px 50px;
             text-transform: uppercase;
             border: none;
             border-radius: 50px;
             text-align: center;
             margin-top: 15px;
+            width: 475px
         }
+
 
         &--btn {
             @include globalBtn;
@@ -73,10 +75,9 @@ header {
 .results {
     background: $accentColor;
     display: flex;
-    // display: none;
     flex-direction: column;
     justify-content: center;
-    height: calc(100vh - 58px);
+    height: calc(100vh - 55px);
     &--active{
         display: flex;
     }
@@ -155,11 +156,8 @@ header {
         position: relative; 
         position: relative;
         padding-top: 480px;
-        // padding-top: 35px;
-        // height: 0;
         overflow: hidden;    
         width: 854px;
-        // max-width: 600px;  
     }
     //The IFRAME
     .video-trailer {
@@ -178,12 +176,16 @@ header {
 
 footer {
     background: #1B1F38;
+    .wrapper {
+        display: flex;
+        height: 55px;
+    }
 }
 
 .footer-text {
     @include primaryFont(1.8rem, $fontColorLight);
-    padding: 20px 0;
     text-align: center;
+    margin: auto;
 }
 
 // MEDIA QUERIES
@@ -245,7 +247,7 @@ footer {
     .footer-text {
         @include primaryFont(1.3rem, $fontColorLight);
     }
-}
+}   
 
 @media(max-width: 854px){
     div.video .video-container {
@@ -258,11 +260,15 @@ footer {
 @media(max-width: 845px) {
     .hero {
         &__form {
-
             &--input {
-                padding: 13px 80px;
+                padding: 13px 20px;
                 margin-top: 10px;
+                width: 330px;
             }
+            &--btn {
+                font-size: 1.5rem;  
+                padding: 13px 50px;
+            } 
         }
     }
     // RESULTS
@@ -299,35 +305,6 @@ footer {
     }
 }
 
-@media(max-width: 845px) {
-    .hero {
-        &__form {
-
-            &--input {
-                @include primaryFont(1.5rem, #86888A);
-                text-transform: uppercase;
-                border: none;
-                border-radius: 50px;
-                text-align: center;
-                padding: 13px 60px;
-                margin-top: 10px;
-            }
-
-            &--btn {
-                font-size: 1.5rem;  
-                padding: 13px 50px;
-            }    
-        }
-    }
-    // RESULTS
-    .content-container {
-
-        &__button {
-            font-size: 1.5rem;
-            padding: 13px 40px;
-        }
-    } 
-}
 
 @media (max-width: 665px) {
     .hero {
@@ -382,36 +359,6 @@ footer {
     .footer-text {
         @include primaryFont(1.3rem, $fontColorLight);
     }
-}
-
-@media(max-width: 845px) {
-    .hero {
-        &__form {
-
-            &--input {
-                @include primaryFont(1.5rem, #86888A);
-                text-transform: uppercase;
-                border: none;
-                border-radius: 50px;
-                text-align: center;
-                padding: 13px 60px;
-                margin-top: 10px;
-            }
-
-            &--btn {
-                font-size: 1.5rem;  
-                padding: 13px 50px;
-            }    
-        }
-    }
-    // RESULTS
-    .content-container {
-
-        &__button {
-            font-size: 1.5rem;
-            padding: 13px 40px;
-        }
-    } 
 }
 
 @media (max-width: 625px) {
