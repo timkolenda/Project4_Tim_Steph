@@ -95,7 +95,7 @@ movieApp.getPersonInfo = function(){
 movieApp.extractPersonInfo = function(theDataWeGot){
     console.log('it fuckin worked')
     console.log(theDataWeGot);
-    if (theDataWeGot === undefined) {
+    if (theDataWeGot.total_results === 0) {
         swal("Error", "Please enter a valid actor name!", "error");
     } else {
     movieApp.getMovieInfoDataObject.with_cast = theDataWeGot.results[0].id;

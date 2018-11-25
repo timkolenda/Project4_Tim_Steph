@@ -12,6 +12,23 @@ header {
     text-align: center;
 }
 
+//ANIMATION
+@keyframes fall {
+    0% {
+        top: 0;
+
+    }
+    100% {
+        top: 2000%;
+    }
+}   
+
+.animate {
+    position: relative;
+    color: $primaryColor;
+    animation: fall 3s ease-in 1;
+}
+
 .hero {
     display: flex;
     flex-direction: column;
@@ -61,7 +78,6 @@ header {
             margin-top: 15px;
             width: 475px
         }
-
 
         &--btn {
             @include globalBtn;
@@ -159,6 +175,7 @@ header {
         overflow: hidden;    
         width: 854px;
     }
+
     //The IFRAME
     .video-trailer {
         position: absolute;
@@ -188,237 +205,8 @@ footer {
     margin: auto;
 }
 
-// MEDIA QUERIES
-
-@media(max-width: 1000px) {
-    .wrapper {
-        width: 90%;
-    }
-
-    .hero {
-        
-        &__heading {
-            @include primaryFont(6rem, $fontColorLight);
-        }
-
-        &__subheading {
-            padding-bottom: 50px;
-        }
-
-        &__text {
-            max-width: 500px;
-        }
-
-        &__form {
-
-            &--input {
-                margin-top: 10px;
-            }
-        }
-    }
-
-    // RESULTS
-    .content-container {
-        padding: 20px;
-
-        &__title {
-            @include primaryFont(2.5rem, $primaryColor);
-        }
-
-        &__left,
-        &__right {
-            padding: 15px;
-        }
-
-        &__left {
-            flex: 1 1 40%;
-        }
-
-        &__right {
-            flex: 1 1 60%;
-        }
-
-        &__button {
-            font-size: 1.8rem;
-            padding: 13px 40px;
-        }
-    }
-    // FOOTER
-    .footer-text {
-        @include primaryFont(1.3rem, $fontColorLight);
-    }
-}   
-
-@media(max-width: 854px){
-    div.video .video-container {
-        padding-top: 56.25%;
-    }
-}
 
 
-
-@media(max-width: 845px) {
-    .hero {
-        &__form {
-            &--input {
-                padding: 13px 20px;
-                margin-top: 10px;
-                width: 330px;
-            }
-            &--btn {
-                font-size: 1.5rem;  
-                padding: 13px 50px;
-            } 
-        }
-    }
-    // RESULTS
-    .content-container {
-        margin: 50px 0;
-        padding: 20px;
-
-        &__title {
-            @include primaryFont(2.5rem, $primaryColor);
-        }
-
-        &__text {
-            @include primaryFont(1.4rem, $fontColorLight);
-            line-height: 1.6;
-        }
-
-        &__left,
-        &__right {
-            padding: 15px;
-        }
-
-        &__left {
-            flex: 1 1 40%;
-        }
-
-        &__right {
-            flex: 1 1 60%;
-        }
-
-        &__button {
-            font-size: 1.8rem;
-            padding: 13px 40px;
-        }
-    }
-}
-
-
-@media (max-width: 665px) {
-    .hero {
-        &__heading {
-            @include primaryFont(4rem, $fontColorLight);
-        }
-
-        &__subheading {
-            @include primaryFont(2.5rem, $fontColorLight);
-            padding-bottom: 30px;
-        }
-
-        &__text {
-            @include primaryFont(1.5rem, $fontColorLight);
-        }
-
-        &__form {
-
-            &--input {
-                margin-top: 15px;
-            }
-        }
-    }
-
-    // RESULTS
-    .content-container {
-        padding: 20px;
-
-        &__title {
-            @include primaryFont(2.5rem, $primaryColor);
-        }
-
-        &__left,
-        &__right {
-            padding: 15px;
-        }
-
-        &__left {
-            flex: 1 1 40%;
-        }
-
-        &__right {
-            flex: 1 1 60%;
-        }
-
-        &__button {
-            font-size: 1.8rem;
-            padding: 13px 40px;
-        }
-    }
-    // FOOTER
-    .footer-text {
-        @include primaryFont(1.3rem, $fontColorLight);
-    }
-}
-
-@media (max-width: 625px) {
-// RESULTS
-    .results {
-        height: initial;
-    }
-    .content-container {
-        margin: 50px 20;
-
-        &__left {
-            flex: 1 1 100%;
-            &--img {
-                width: 80%;
-            }
-        }
-
-        &__right {
-            flex: 1 1 100%;
-        }
-
-        &__left,
-        &__right {
-            padding: 20px;
-        }
-    }
-}
-
-
-@media (max-width: 400px) {
-    .content-container {
-        margin: 30px 0;
-        padding: 0;
-
-        &__button {
-            font-size: 1.5rem;
-            padding: 13px 40px;
-        }
-    } 
-}
-
-//ANIMATION
-@keyframes fall {
-    0% {
-        top: 0;
-
-    }
-    100% {
-        top: 2000%;
-    }
-}   
-
-.animate {
-    position: relative;
-    color: $primaryColor;
-    animation: fall 3s ease-in 1;
-}
-
-// Then I added this right under the scroll function
-//  $(".hero__heading--blue").addClass('.animate');
 
 
 
