@@ -128,14 +128,16 @@ movieApp.extractPersonInfo = function(theDataWeGot){
     console.log('it fuckin worked')
     
     movieApp.getMovieInfoDataObject.with_cast = theDataWeGot.results[0].id;
-    if (theDataWeGot === false) {
+    console.log(theDataWeGot);
+    if (theDataWeGot === undefined) {
         swal("Error", "Please enter a valid actor name!", "error");
     } else {
     // console.log('when actor is chosen', movieApp.getMovieInfoDataObject);
     movieApp.userSelectionObject.profilePath = theDataWeGot.results[0].profile_path;
     movieApp.userSelectionObject.name = theDataWeGot.results[0].name;
-    console.log('worked', theDataWeGot);
-    movieApp.getMovieInfo();    
+    // console.log('worked', theDataWeGot);
+    // movieApp.getMovieInfo();    
+    }
 }
 
 
@@ -269,9 +271,17 @@ movieApp.hideVideo = function(){
 
 
 
+// movieApp.getData(movieApp.discoverMovie, null, movieApp.userSelectionObject.userActorSelectionID);
+//^^^^^^ Technically this function pulls movies based on the actor that saved in user actor selection - wonky though
+
+
+//ask the api for an actor's data
+//push the id and poster end point to the actor object
+//use the id to ask the api for a list of movies
+//push the movie id, poster endpoint, video endpoint, movie rating, popularity, synopsis to the object
 
 
 //questions
 //is this readable
 //should I just create multiple functions that talk to the API
-//
+//}
