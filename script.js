@@ -78,12 +78,16 @@ movieApp.search = function(){
         // console.log(`${$('.hero__form--input').val()}`);
         $('.results').removeClass('visuallyhidden');
         movieApp.getPersonInfoDataObject.query = $('.hero__form--input').val();
-        console.log(movieApp.userActorSelection);
+        // alert the user if they do not enter any actor name
+        if (movieApp.getPersonInfoDataObject.query === "" || typeof movieApp.getPersonInfoDataObject.query !== "undefined") {
+            swal("Error", "Please enter a valid actor name!", "error");
+        } else {
         movieApp.getPersonInfo();
         $('.hero__heading--blue').addClass('animate');
         $('html, body').animate({ scrollTop: $('header').height() }, 3000);
         // $('.hero__heading--blue').removeClass('animate');
         //some stuff
+        }
     })
 }
 
