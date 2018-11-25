@@ -172,7 +172,7 @@ h1, h2, h3, h4, h5, h6, p {
 header {
   background: url(../images/banner-image.png) no-repeat center center;
   background-size: cover;
-  height: calc(100vh - 58px);
+  height: calc(100vh - 55px);
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -281,7 +281,7 @@ header {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  height: calc(100vh - 58px); }
+  height: calc(100vh - 55px); }
   .results--active {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -388,14 +388,19 @@ header {
 
 footer {
   background: #1B1F38; }
+  footer .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 55px; }
 
 .footer-text {
   font-family: 'Raleway', sans-serif;
   color: #fcfcfc;
   letter-spacing: 1px;
   font-size: 1.8rem;
-  padding: 20px 0;
-  text-align: center; }
+  text-align: center;
+  margin: auto; }
 
 @media (max-width: 1000px) {
   .wrapper {

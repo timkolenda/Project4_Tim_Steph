@@ -77,13 +77,17 @@ movieApp.search = function(){
         // console.log('set');
         // console.log(`${$('.hero__form--input').val()}`);
         movieApp.getPersonInfoDataObject.query = $('.hero__form--input').val();
-        movieApp.getPersonInfo();
+        if (movieApp.getPersonInfoDataObject.query === "") {
+            swal("Error", "Please enter a valid actor name!", "error");
+        } else {
+            movieApp.getPersonInfo();
         // alert the user if they do not enter any actor name
         // $('.results').removeClass('visuallyhidden');
         // $('.hero__heading--blue').addClass('animate');
         // $('html, body').animate({ scrollTop: $('header').height() }, 3000);
         // $('.hero__heading--blue').removeClass('animate');
         //some stuff
+            }
         })
 }
 
@@ -136,7 +140,7 @@ movieApp.extractPersonInfo = function(theDataWeGot){
     movieApp.userSelectionObject.profilePath = theDataWeGot.results[0].profile_path;
     movieApp.userSelectionObject.name = theDataWeGot.results[0].name;
     // console.log('worked', theDataWeGot);
-    // movieApp.getMovieInfo();    
+    movieApp.getMovieInfo();    
     }
 }
 
@@ -217,12 +221,12 @@ movieApp.organizeData = function(){
 }
 
 movieApp.addMovieInfoToSite = function(){
+    movieApp.displayMovieInfo()
     movieApp.addTitleToSite();
     movieApp.addPosterImageToSite();
     movieApp.addOverViewToSite();
     movieApp.addRatingToSite();
     movieApp.addTrailerToSite();
-    movieApp.displayMovieInfo()
 }
 
 movieApp.addTitleToSite = function(){

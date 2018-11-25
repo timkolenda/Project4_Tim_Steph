@@ -3,7 +3,7 @@
 header {
     background: url(../images/banner-image.png) no-repeat center center;
     background-size: cover;
-    height: calc(100vh - 58px);
+    height: calc(100vh - 55px);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -73,10 +73,9 @@ header {
 .results {
     background: $accentColor;
     display: flex;
-    // display: none;
     flex-direction: column;
     justify-content: center;
-    height: calc(100vh - 58px);
+    height: calc(100vh - 55px);
     &--active{
         display: flex;
     }
@@ -178,12 +177,16 @@ header {
 
 footer {
     background: #1B1F38;
+    .wrapper {
+        display: flex;
+        height: 55px;
+    }
 }
 
 .footer-text {
     @include primaryFont(1.8rem, $fontColorLight);
-    padding: 20px 0;
     text-align: center;
+    margin: auto;
 }
 
 // MEDIA QUERIES
@@ -245,7 +248,7 @@ footer {
     .footer-text {
         @include primaryFont(1.3rem, $fontColorLight);
     }
-}
+}   
 
 @media(max-width: 854px){
     div.video .video-container {
