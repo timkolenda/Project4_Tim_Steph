@@ -140,7 +140,7 @@ movieApp.getMovieInfo = function(){
 
 movieApp.movieSelector = function (theDataWeGot){
     movieApp.userSelectionObject.movieList = theDataWeGot.results.filter(function(film){
-        return film.vote_count >= 50    ;
+        return film.vote_count >= 25;
     });
     console.log('list', movieApp.userSelectionObject.movieList);
     movieApp.extractMovieInfo();
