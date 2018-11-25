@@ -57,7 +57,6 @@ movieApp.search = function(){
 }
 
 movieApp.getData = function(searchType, data, callback){
-    console.log('good');
     return $.ajax({
         url: `${movieApp.baseURL}${searchType}`,
         dataType: 'jsonp',
@@ -69,13 +68,10 @@ movieApp.getData = function(searchType, data, callback){
 }
 
 movieApp.getPersonInfo = function(){
-    console.log('good');
     movieApp.getData(movieApp.searchForActor, movieApp.getPersonInfoDataObject, movieApp.extractPersonInfo);
 }
 
 movieApp.extractPersonInfo = function(theDataWeGot){
-    console.log('it fuckin worked')
-    console.log(theDataWeGot);
     if (theDataWeGot.total_results === 0) {
         swal("Error", "Please enter a valid actor name!", "error");
     } else {
@@ -95,12 +91,10 @@ movieApp.movieSelector = function (theDataWeGot){
     movieApp.userSelectionObject.movieList = theDataWeGot.results.filter(function(film){
         return film.vote_count >= 25;
     });
-    console.log('list', movieApp.userSelectionObject.movieList);
     movieApp.extractMovieInfo();
 }
 
 movieApp.extractMovieInfo = function (){
-    console.log("made it this far")
     movieApp.userSelectionObject.movieTitle = movieApp.userSelectionObject.movieList[0].title;
     movieApp.userSelectionObject.movieOverView = movieApp.userSelectionObject.movieList[0].overview;
     movieApp.userSelectionObject.movieID = movieApp.userSelectionObject.movieList[0].id;
@@ -128,7 +122,6 @@ movieApp.getVideos = function(){
 }
 
 movieApp.extractVideoInfo = function (theDataWeGot){
-    console.log('worked',theDataWeGot);
     if(theDataWeGot.results.toString()){
         movieApp.userSelectionObject.videoKey = theDataWeGot.results[Math.floor(Math.random() * theDataWeGot.results.length)].key;
     }
