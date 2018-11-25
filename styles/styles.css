@@ -247,12 +247,13 @@ header {
       letter-spacing: 1px;
       font-size: 2rem;
       background: #fcfcfc;
-      padding: 13px 130px;
+      padding: 13px 50px;
       text-transform: uppercase;
       border: none;
       border-radius: 50px;
       text-align: center;
-      margin-top: 15px; }
+      margin-top: 15px;
+      width: 475px; }
     .hero__form--btn {
       font-family: 'Raleway', sans-serif;
       color: #fcfcfc;
@@ -448,8 +449,12 @@ footer {
 
 @media (max-width: 845px) {
   .hero__form--input {
-    padding: 13px 80px;
-    margin-top: 10px; }
+    padding: 13px 20px;
+    margin-top: 10px;
+    width: 330px; }
+  .hero__form--btn {
+    font-size: 1.5rem;
+    padding: 13px 50px; }
   .content-container {
     margin: 50px 0;
     padding: 20px; }
@@ -477,25 +482,6 @@ footer {
     .content-container__button {
       font-size: 1.8rem;
       padding: 13px 40px; } }
-
-@media (max-width: 845px) {
-  .hero__form--input {
-    font-family: 'Raleway', sans-serif;
-    color: #86888A;
-    letter-spacing: 1px;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 50px;
-    text-align: center;
-    padding: 13px 60px;
-    margin-top: 10px; }
-  .hero__form--btn {
-    font-size: 1.5rem;
-    padding: 13px 50px; }
-  .content-container__button {
-    font-size: 1.5rem;
-    padding: 13px 40px; } }
 
 @media (max-width: 665px) {
   .hero__heading {
@@ -541,25 +527,6 @@ footer {
     color: #fcfcfc;
     letter-spacing: 1px;
     font-size: 1.3rem; } }
-
-@media (max-width: 845px) {
-  .hero__form--input {
-    font-family: 'Raleway', sans-serif;
-    color: #86888A;
-    letter-spacing: 1px;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 50px;
-    text-align: center;
-    padding: 13px 60px;
-    margin-top: 10px; }
-  .hero__form--btn {
-    font-size: 1.5rem;
-    padding: 13px 50px; }
-  .content-container__button {
-    font-size: 1.5rem;
-    padding: 13px 40px; } }
 
 @media (max-width: 625px) {
   .results {

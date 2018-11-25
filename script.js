@@ -1,4 +1,4 @@
-// APP OBJECT
+// APP OBJECTS
 const movieApp = {}
 
 movieApp.userSelectionObject = {};
@@ -12,9 +12,8 @@ movieApp.accessKey = "f0ba00aa70aa95e488fb89869bf99a39";
 movieApp.discoverMovie = 'discover/movie';
 movieApp.searchForActor = `search/person`;
 movieApp.searchConfig = 'configuration';
-// movieApp.searchMovieTrailor = 'movie/383498/videos'
-// movieApp.searchMovieTrailor = 'movie/338952/videos?api_key=f0ba00aa70aa95e488fb89869bf99a39'
-movieApp.searchMovieTrailer = `movie/${movieApp.userSelectionObject.movieID}/videos`;
+
+// movieApp.searchMovieTrailer = `movie/${movieApp.userSelectionObject.movieID}/videos`;
 // console.log('up here', movieApp.userSelectionObject);
 
 
