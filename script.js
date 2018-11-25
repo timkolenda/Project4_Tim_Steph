@@ -47,30 +47,14 @@ $(function () {
 movieApp.search = function(){
     $('.hero__form').on('submit', function(event){
         event.preventDefault();
-        // console.log('set');
-        // console.log(`${$('.hero__form--input').val()}`);
         movieApp.getPersonInfoDataObject.query = $('.hero__form--input').val();
         if (movieApp.getPersonInfoDataObject.query === "") {
             swal("Error", "Please enter a valid actor name!", "error");
         } else {
             movieApp.getPersonInfo();
-        // alert the user if they do not enter any actor name
-        // $('.results').removeClass('visuallyhidden');
-        // $('.hero__heading--blue').addClass('animate');
-        // $('html, body').animate({ scrollTop: $('header').height() }, 3000);
-        // $('.hero__heading--blue').removeClass('animate');
-        //some stuff
             }
         })
 }
-
-movieApp.displayMovieInfo = function(){
-    $('.results').removeClass('visuallyhidden');
-    $('.hero__heading--blue').addClass('animate');
-    $('html, body').animate({ scrollTop: $('header').height() }, 3000);
-}
-
-
 
 movieApp.getData = function(searchType, data, callback){
     console.log('good');
@@ -80,9 +64,6 @@ movieApp.getData = function(searchType, data, callback){
         method: 'GET', 
         data: data
     }).then((res) => {
-        // console.log(movieApp.userSelectionObject);
-        // console.log(res);
-        // return res;
         callback(res);
     })
 }
@@ -120,27 +101,15 @@ movieApp.movieSelector = function (theDataWeGot){
 
 movieApp.extractMovieInfo = function (){
     console.log("made it this far")
-    // movieApp.movieSelector();
     movieApp.userSelectionObject.movieTitle = movieApp.userSelectionObject.movieList[0].title;
-    // console.log(movieApp.userSelectionObject.movieTitle);
     movieApp.userSelectionObject.movieOverView = movieApp.userSelectionObject.movieList[0].overview;
-    // console.log(movieApp.userSelectionObject.movieOverView);
     movieApp.userSelectionObject.movieID = movieApp.userSelectionObject.movieList[0].id;
-    // console.log(movieApp.userSelectionObject.movieID);
     movieApp.userSelectionObject.moviePosterEndPoint = movieApp.userSelectionObject.movieList[0].poster_path;
-    // console.log(movieApp.userSelectionObject.moviePosterEndPoint);
     movieApp.userSelectionObject.moviePopularity = movieApp.userSelectionObject.movieList[0].popularity;
-    // console.log(movieApp.userSelectionObject.moviePopularity);
     movieApp.userSelectionObject.movieRating = movieApp.userSelectionObject.movieList[0].vote_average;
-    // console.log(movieApp.userSelectionObject.movieRating);
-    // console.log(movieApp.userSelectionObject.movieList);
     movieApp.getConfiguration();
-        // return
-    // }
 }
 
-
-//use to get config data
 movieApp.getConfiguration = function(){
     movieApp.getData(movieApp.searchConfig, movieApp.APIOnly, movieApp.extractConfigData);
 }
@@ -150,13 +119,9 @@ movieApp.extractConfigData = function (theDataWeGot){
     movieApp.userSelectionObject.posterSize = theDataWeGot.images.poster_sizes[2];
     movieApp.userSelectionObject.stillSize = theDataWeGot.images.still_sizes[1];
     movieApp.userSelectionObject.profileSize = theDataWeGot.images.profile_sizes[1];
-    console.log(theDataWeGot);
-    // console.log(movieApp.userSelectionObject.movieID);
-    // console.log(movieApp.searchMovieTrailor);
     movieApp.getVideos();
     
 }
-
 
 movieApp.getVideos = function(){
     movieApp.getData(`movie/${movieApp.userSelectionObject.movieID}/videos`, movieApp.APIOnly, movieApp.extractVideoInfo);
@@ -172,12 +137,7 @@ movieApp.extractVideoInfo = function (theDataWeGot){
 
 movieApp.organizeData = function(){
     movieApp.userSelectionObject.videoLink = `https://www.youtube.com/embed/${movieApp.userSelectionObject.videoKey}`
-    
-    // console.log(movieApp.userSelectionObject.videoLink);
     movieApp.userSelectionObject.moviePoster = `${movieApp.userSelectionObject.imageBaseURL}${movieApp.userSelectionObject.posterSize}${movieApp.userSelectionObject.moviePosterEndPoint}`
-    // console.log(movieApp.userSelectionObject.moviePoster);
-    console.log(movieApp.userSelectionObject);
-    console.log('done');
     movieApp.addMovieInfoToSite();
 }
 
@@ -188,6 +148,12 @@ movieApp.addMovieInfoToSite = function(){
     movieApp.addOverViewToSite();
     movieApp.addRatingToSite();
     movieApp.addTrailerToSite();
+}
+
+movieApp.displayMovieInfo = function () {
+    $('.results').removeClass('visuallyhidden');
+    $('.hero__heading--blue').addClass('animate');
+    $('html, body').animate({ scrollTop: $('header').height() }, 3000);
 }
 
 movieApp.addTitleToSite = function(){
@@ -210,8 +176,6 @@ movieApp.addTrailerToSite = function(){
     $('.video-trailer').attr('src', movieApp.userSelectionObject.videoLink);
 }
 
-
-
 movieApp.showVideo = function(){
     $('.content-container__button').on('click', function(){
         $('.video').toggleClass('video--active');
@@ -230,23 +194,3 @@ movieApp.hideVideo = function(){
 
 
 
-
-
-
-
-
-
-// movieApp.getData(movieApp.discoverMovie, null, movieApp.userSelectionObject.userActorSelectionID);
-//^^^^^^ Technically this function pulls movies based on the actor that saved in user actor selection - wonky though
-
-
-//ask the api for an actor's data
-//push the id and poster end point to the actor object
-//use the id to ask the api for a list of movies
-//push the movie id, poster endpoint, video endpoint, movie rating, popularity, synopsis to the object
-
-
-//questions
-//is this readable
-//should I just create multiple functions that talk to the API
-//}
